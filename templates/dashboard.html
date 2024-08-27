@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <style>
+
+body {
+    background: radial-gradient(circle at center, #0d0d0d, #000000);
+    color: #ffffff;
+    font-family: 'Arial', sans-serif;
+    margin: 20px;
+    padding: 0;
+}
+
+.dashboard {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    padding: 20px;
+}
+
+.bot-box {
+    background-color: #171616;
+    border: 1px solid #323232; 
+    padding: 16px;
+    border-radius: 15px;
+    box-shadow: 0 6px 12px rgba(200, 200, 200, 0.10);
+    width: 300px;
+    position: relative;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.bot-box:hover {
+    transform: translateY(-20px);
+    box-shadow: 0 12px 24px rgba(0,0,0,0.5);
+}
+
+.bot-box h2 {
+    margin-top: 0;
+    color: #00d4ff;
+}
+
+.bot-box .buttons {
+    display: flex;
+    gap: 8px;
+    margin-top: 16px;
+}
+
+.bot-box .buttons a, .bot-box .buttons button {
+    padding: 8px 16px;
+    border: none;
+    border-radius: 4px;
+    text-decoration: none;
+    color: #ffffff;
+    cursor: pointer;
+    display: inline-block;
+    text-align: center;
+    transition: background-color 0.3s ease;
+}
+
+.bot-box .buttons .view-btn {
+    background-color: #007BFF;
+}
+
+.bot-box .buttons .run-btn {
+    background-color: #28a745;
+}
+
+.bot-box .buttons .edit-btn {
+    background-color: #FF8C00;
+}
+
+.bot-box .buttons .view-btn:hover {
+    background-color: #0056b3;
+}
+
+.bot-box .buttons .run-btn:hover {
+    background-color: #218838;
+}
+
+.bot-box .buttons .edit-btn:hover {
+    background-color: #e07600;
+}
+
+body::before {
+    content: '';
+    position: absolute;
+    top: -50px;
+    left: -50px;
+    width: 500px;
+    height: 500px;
+    background: radial-gradient(circle, rgba(0,212,255,0.4) 0%, rgba(9,9,121,0.3) 35%, rgba(2,0,36,0) 100%);
+    border-radius: 50%;
+    z-index: 0;
+    animation: moveOrb 20s infinite alternate;
+}
+
+body::after {
+    content: '';
+    position: absolute;
+    bottom: -100px;
+    right: -100px;
+    width: 700px;
+    height: 700px;
+    background: radial-gradient(circle, rgba(255,0,150,0.4) 0%, rgba(9,9,121,0.3) 35%, rgba(2,0,36,0) 100%);
+    border-radius: 50%;
+    z-index: 0;
+    animation: moveOrb 25s infinite alternate-reverse;
+}
+
+@keyframes moveOrb {
+    from {
+        transform: translateX(0) translateY(0);
+    }
+    to {
+        transform: translateX(50px) translateY(50px);
+    }
+}
+
+    </style>
+</head>
+<body>
+    <div class="main-content">
+    <h1>User ID: {{ session.user_id }}</h1>
+    <h2>Your Bots:</h2>
+    <div class="dashboard">
+        {% if bots %}
+            {% for bot_id, bot_info in bots.items() %}
+                <div class="bot-box">
+                    <h2>{{ bot_info.name }}</h2>
+                    <p><strong>Client ID:</strong> {{ bot_info.client_id }}</p>
+                    <p><strong>Username:</strong> {{ bot_info.username }}</p>
+                    <p><strong>Client Secret:</strong> {{ bot_info.client_secret }}</p>
+                    <p><strong>Password:</strong> {{ bot_info.password }}</p>
+                    <div class="buttons">
+                        <a class="view-btn" href="/bot/{{ bot_id }}">View</a>
+                        <button class="run-btn">{{ bot_info.status }}</button>
+                    </div>
+                </div>
+            {% endfor %}
+        {% else %}
+            <h1>No bots available</h1>
+        {% endif %}
+    </div>
+    </div>
+    <script>
+        function runBot(botId) {
+            console.log('Running bot:', botId);
+        }
+        
+        function editBot(botId) {
+            console.log('Editing bot:', botId);
+        }
+    </script>
+</body>
+</html>

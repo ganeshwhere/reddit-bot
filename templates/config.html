@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Config</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="sidebar">
+        <h2>Dashboard</h2>
+        <ul>
+            <li><a href="{{ url_for('dashboard') }}">Home</a></li>
+            <li><a href="{{ url_for('logs') }}">Logs</a></li>
+            <li><a href="{{ url_for('config') }}">Config</a></li>
+        </ul>
+    </div>
+
+    <div class="main-content">
+        <h1>Config</h1>
+        <form action="" method="POST">
+            <h2>Reddit Account Details</h2>
+            <label for="client_id">Client ID:</label>
+            <input type="text" id="client_id" name="client_id"><br>
+
+            <label for="client_secret">Client Secret:</label>
+            <input type="text" id="client_secret" name="client_secret" value="{{ config.client_secret }}" required><br>
+
+            <label for="username">Username:</label>
+            <input type="text" id="username" name="username" br>
+
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" br>
+
+            <h2>Bot Configuration</h2>
+            <label for="proxy">Proxy:</label>
+            <input type="text" id="proxy" name="proxy" value="{{ botconfig.proxy }}"><br>
+
+            <label for="cooldown">Cooldown (minutes):</label>
+            <input type="number" id="cooldown" name="cooldown" value="{{ botconfig.cooldown }}" min="1" required><br>
+
+            <label for="webhook">Webhook URL:</label>
+            <input type="text" id="webhook" name="webhook" value="{{ botconfig.webhook }}"><br>
+
+            <label for="discord_webhook">Discord Webhook:</label>
+            <input type="checkbox" id="discord_webhook" name="discord_webhook" {% if botconfig.discord_webhook %}checked{% endif %}><br>
+
+            <label for="type">Bot Type:</label>
+            <select id="type" name="type">
+                <option value="ai" {% if botconfig.type == "ai" %}selected{% endif %}>AI</option>
+                <option value="ad" {% if botconfig.type == "ad" %}selected{% endif %}>Advertisement</option>
+                <option value="post" {% if botconfig.type == "post" %}selected{% endif %}>Post</option>
+            </select><br>
+
+            <label for="all_subreddits">Post in All Subreddits:</label>
+            <input type="checkbox" id="all_subreddits" name="all_subreddits" {% if botconfig.all_subreddits %}checked{% endif %}><br>
+
+            <h2>Advertisements</h2>
+            {% for i in range(3) %}
+                <label for="ad_{{ i }}">Advertisement {{ i+1 }}:</label>
+                <textarea id="ad_{{ i }}" name="ads[]">{{ botconfig.ads[i] }}</textarea><br>
+            {% endfor %}
+
+            <h2>Subreddits</h2>
+            {% for i in range(3) %}
+                <label for="subreddit_{{ i }}">Subreddit {{ i+1 }}:</label>
+                <input type="text" id="subreddit_{{ i }}" name="subreddits[]" value="{{ botconfig.subreddits[i] }}"><br>
+            {% endfor %}
+
+            <h2>Posts</h2>
+            {% for i in range(2) %}
+                <label for="post_title_{{ i }}">Post Title {{ i+1 }}:</label>
+                <input type="text" id="post_title_{{ i }}" name="posts[{{ i }}][title]" value="{{ botconfig.posts[i]['title'] }}"><br>
+
+                <label for="post_body_{{ i }}">Post Body {{ i+1 }}:</label>
+                <textarea id="post_body_{{ i }}" name="posts[{{ i }}][body]">{{ botconfig.posts[i]['body'] }}</textarea><br>
+            {% endfor %}
+
+            <button type="submit">Save Config</button>
+        </form>
+    </div>
+</body>
+</html>

@@ -1,0 +1,119 @@
+
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            background: radial-gradient(circle at center, #0d0d0d, #000000);
+            color: #ffffff;
+        }
+
+        .sidebar {
+            width: 200px;
+            background-color: #1c2833;
+            padding: 15px;
+            color: #ecf0f1;
+            height: 100vh;
+            position: fixed;
+            box-shadow: 4px 0 10px rgba(0, 0, 0, 0.3);
+        }
+
+        .sidebar h2 {
+            text-align: left;
+            color: #39e5b2;
+        }
+
+        .sidebar ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .sidebar ul li {
+            margin: 15px 0;
+        }
+
+        .sidebar ul li a {
+            color: #ecf0f1;
+            text-decoration: none;
+            transition: color 1s ease;
+        }
+
+        .sidebar ul li a:hover {
+            color: #39e5b2;
+        }
+
+        .main-content {
+            margin-left: 220px;
+            padding: 20px;
+            width: calc(100% - 220px); 
+            background-color: #1a1a1a;
+            border-radius: 0px;
+            box-shadow: 0 4px 10px rgba(205, 197, 197, 0.3);
+        }
+
+        h1 {
+            font-size: 24px;
+            color: #39e5b2;
+        }
+
+        h2 {
+            color: #39e5b2;
+            margin-bottom: 10px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            color: #ffffff;
+        }
+
+        input[type="text"],
+        input[type="password"],
+        input[type="number"],
+        textarea,
+        select {
+            width: 50%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border-radius: 4px;
+            border: 1px solid #444;
+            background-color: #333;
+            color: #ffffff;
+            font-size: 16px;
+            text-align: center;
+
+        }
+
+        input[type="checkbox"] {
+            margin-right: 10px;
+    
+        }
+
+        input[type="text"]:focus,
+        input[type="password"]:focus,
+        input[type="number"]:focus,
+        textarea:focus,
+        select:focus {
+            border-color: #00d4ff;
+            outline: none;
+            box-shadow: 0 0 8px rgba(0, 212, 255, 0.5);
+            
+        
+        }
+
+        button {
+            background-color: #3498db;
+            color: white;
+            padding: 12px;
+            border-radius: 4px;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #2980b9;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.5);
+        }
