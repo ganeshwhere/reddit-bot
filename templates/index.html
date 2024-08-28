@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reddit Comment Bot</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <style>
+        body {
+    background: radial-gradient(circle at center, #e10d5e, #b772b4);
+    color: #ffffff;
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    position: relative;
+    text-align: center;
+}
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    z-index: 1;
+}
+
+header {
+    margin-bottom: 30px;
+}
+
+header h1 {
+    color: #ffffff;
+    font-size: 36px;
+    text-decoration: underline rgb(188, 222, 53);
+}
+
+header p {
+    font-size: 18px;
+    color: #ffffff;
+}
+
+.buttons {
+    margin: 20px 0;
+}
+
+.action-btn {
+    background-color: #007BFF;
+    color: #ffffff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    display: inline-block;
+    text-align: center;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    width: 40%;
+    margin: 0 10px;
+}
+
+.action-btn:hover {
+    background-color: #ffffff;
+    transform: translateY(-2px);
+}
+
+.content {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.content section {
+    margin-bottom: 30px;
+}
+
+.content h2 {
+    color: #ffffff;
+    font-size: 28px;
+    text-decoration: underline rgb(188, 222, 53);
+}
+
+.content p {
+    color: #cccccc;
+    font-size: 16px;
+}
+
+.content ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.content ul li {
+    background: #1a1a1a;
+    padding: 10px;
+    margin: 5px 0;
+    border-radius: 5px;
+    color: #cccccc;
+    font-size: 16px;
+}
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Reddit Comment Bot</h1>
+            <p>Automate comment bot for reddit.</p>
+        </header>
+
+        <section class="buttons">
+            <a href="login.html" class="action-btn">Login</a>
+            <br>
+            <br>
+            <a href="create.html" class="action-btn">Register</a>
+        </section>
+    </div>
+
+    <div class="content">
+        <section>
+            <h2>About the Bot</h2>
+            <p>Our Reddit Comment Bot is designed to help you to generate auto comments on Reddit, Created and researched by <u>Meet S.</u></p>
+        </section>
+        <section>
+            <h2>Key Features</h2>
+            <ul>
+                <li>Automated Commenting: Save time by automating your comments on multiple subreddits.</li>
+                <li>Customizable Responses: Tailor your bot’s responses to fit different subreddits and discussions.</li>
+                <li>Scheduled Posting: Plan and schedule your comments for optimal engagement times.</li>
+                <li>Analytics: Track the performance of your comments and adjust your strategy accordingly.</li>
+            </ul>
+        </section>
+    </div>
+</body>
+</html>
